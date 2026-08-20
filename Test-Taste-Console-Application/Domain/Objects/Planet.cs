@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Test_Taste_Console_Application.Domain.DataTransferObjects;
@@ -9,6 +10,7 @@ namespace Test_Taste_Console_Application.Domain.Objects
     {
         public string Id { get; set; }
         public float SemiMajorAxis { get; set; }
+        public string AvgTemp { get; set; }
         public ICollection<Moon> Moons { get; set; }
         public float AverageMoonGravity
         {
@@ -19,6 +21,7 @@ namespace Test_Taste_Console_Application.Domain.Objects
         {
             Id = planetDto.Id;
             SemiMajorAxis = planetDto.SemiMajorAxis;
+            AvgTemp = planetDto.AvgTemp;
             Moons = new Collection<Moon>();
             if(planetDto.Moons != null)
             {
