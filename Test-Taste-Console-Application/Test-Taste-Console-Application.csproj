@@ -11,7 +11,7 @@
       <None Remove="Domain\Objects\" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="log4net" Version="2.0.12" />
+      <PackageReference Include="log4net" Version="3.3.2" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
