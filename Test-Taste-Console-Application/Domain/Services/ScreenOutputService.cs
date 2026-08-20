@@ -185,5 +185,51 @@ namespace Test_Taste_Console_Application.Domain.Services
                 --------------------+--------------------------------------------------
             */
         }
+
+        public void OutputAllPlanetsAndTheirAverageTempToConsole()
+        {
+            Console.WriteLine("Loading Planet data...");
+            //The function works the same way as the PrintAllPlanetsAndTheirMoonsToConsole function. You can find more comments there.
+            var planets = _planetService.GetAllPlanetswithMoon().ToArray();
+            if (!planets.Any())
+            {
+                Console.WriteLine(OutputString.NoMoonsFound);
+                return;
+            }
+
+            Console.WriteLine("Writing data...");
+
+            var columnSizes = new[] { 20, 30 };
+            var columnLabels = new[]
+            {
+                OutputString.PlanetId, OutputString.PlanetMoonAverageTemp
+            };
+
+
+            ConsoleWriter.CreateHeader(columnLabels, columnSizes);
+           
+            foreach (Planet planet in planets)
+            {
+                if (planet.HasMoons())
+                {
+                    ConsoleWriter.CreateText(new string[] { $"{planet.Id}", $"{planet.AvgTemp}" }, columnSizes);
+                }
+                else
+                {
+                    ConsoleWriter.CreateText(new string[] { $"{planet.Id}", $"-" }, columnSizes);
+                }
+            }
+
+            ConsoleWriter.CreateLine(columnSizes);
+            ConsoleWriter.CreateEmptyLines(2);
+
+            /*
+                --------------------+--------------------------------------------------
+                Planet's Number     |Planet's Average temperature
+                --------------------+--------------------------------------------------
+                1                   |0
+                --------------------+--------------------------------------------------
+            */
+        }
     }
 }

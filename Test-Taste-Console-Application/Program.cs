@@ -1,9 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using log4net;
+﻿using log4net;
 using log4net.Config;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Data.Common;
+using System.IO;
+using System.Reflection;
 using Test_Taste_Console_Application.Constants;
 using Test_Taste_Console_Application.Domain.Services;
 using Test_Taste_Console_Application.Domain.Services.Interfaces;
@@ -32,16 +33,19 @@ namespace Test_Taste_Console_Application
 
             try
             {
-                screenOutputService.OutputAllPlanetsAndTheirAverageMoonGravityToConsole();
-                screenOutputService.OutputAllMoonsAndTheirMassToConsole();
-                screenOutputService.OutputAllPlanetsAndTheirMoonsToConsole();
+                //screenOutputService.OutputAllPlanetsAndTheirAverageMoonGravityToConsole();
+                //screenOutputService.OutputAllMoonsAndTheirMassToConsole();
+                //screenOutputService.OutputAllPlanetsAndTheirMoonsToConsole();
+
+                screenOutputService.OutputAllPlanetsAndTheirAverageTempToConsole();
+
             }
             catch (Exception exception)
             {
                 //The users and developers can see the thrown exceptions.
                 Logger.Instance.Error($"{LoggerMessage.ScreenOutputOperationFailed}{exception.Message}");
                 Console.WriteLine($"{ExceptionMessage.ScreenOutputOperationFailed}{exception.Message}");
-                System.Diagnostics.Debug.WriteLine($""{ExceptionMessage.ScreenOutputOperationFailed}{exception.Message}"");
+                System.Diagnostics.Debug.WriteLine($"{ExceptionMessage.ScreenOutputOperationFailed}{exception.Message}");
             }
 
             serviceProvider.Dispose();
